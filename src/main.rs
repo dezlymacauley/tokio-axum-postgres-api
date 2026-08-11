@@ -17,7 +17,7 @@ async fn main() {
     // Connection settings
     let protocol: &str = "http";
     let host: &str = "127.0.0.1";
-    let port: u16 = 7878;
+    let port: u16 = 4666;
     let url: String = format!("{protocol}://{host}:{port}");
 
     // Creates a new instance of the `Router` struct

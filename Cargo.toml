@@ -6,6 +6,16 @@ edition = "2024"
 [dependencies]
 axum = "0.8.9"
 
+# Serializing and Deserializing
+serde = { 
+    version = "1.0.229", 
+    features = ["derive"] 
+}
+
+# `serde` only contains the core engine.
+# You need `serde_json` to enable `serde` to work with JSON
+serde_json = "1.0.151"
+
 # An asynchronus runtime
 tokio = { 
     version = "1.53.1",

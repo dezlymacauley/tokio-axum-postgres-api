@@ -1,3 +1,13 @@
+/*
+  ABOUT: src/route-handlers/authors.ts
+
+  This file contains all the route handler functions for:
+  http://127.0.0.1:4666/authors (including nested routes)
+
+*/
+
+//_____________________________________________________________________________
+
 use axum::{routing::get, Router};
 
 async fn get_authors() -> &'static str {
