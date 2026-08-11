@@ -1,18 +1,15 @@
 // Imports the TcpListener struct from the tokio package.  
 use tokio::net::TcpListener;
 
-// Imports the `Router` struct from the axum package,
-// and the `get` function for making GET requests
-use axum::{routing::get, Router};
+// Imports the `Router` struct from the axum package
+use axum::Router;
 
 // Declare the `route_handlers` directory as a module
 mod route_handlers;
 
-// Import the handler functions for the `/` route
-use route_handlers::root_route_handlers;
-
-// Import the handler functions for the `/authors` route
-use route_handlers::authors_route_handlers;
+// Import the handler functions for the `/` route,
+// and the `/authors` route.
+use route_handlers::{root_route_handlers, authors_route_handlers};
 
 // Defines the entry point of the server
 #[tokio::main]
@@ -29,10 +26,12 @@ async fn main() {
     // the Postgres database is added.
     // app needs to be mutable in order to add routes to it.
     // (Unless you add the routes during creation, with the builder pattern).
-    let mut app: Router<()> = Router::new();
-
-    // Sets up a basic route that returns text data
-    app = app.route("/", get(|| async {"Hello Axum!"}));
+    // Then adds the routes to the axum router
+    // Use .merge() for root-level routes 
+    // and .nest() for prefixed sub-routers
+    let app: Router<()> = Router::new()
+        .merge(root_route_handlers())
+        .nest("/authors", authors_route_handlers());
 
     // Sets up an asynchronus TCP connection that uses 
     // the `Connection settings`
