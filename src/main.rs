@@ -1,12 +1,20 @@
+// Imports the TcpListener struct from the tokio package.  
+use tokio::net::TcpListener;
+
 // Imports the `Router` struct from the axum package,
 // and the `get` function for making GET requests
 use axum::{routing::get, Router};
 
-// Imports the TcpListener struct from the tokio package.  
-use tokio::net::TcpListener;
+// Declare the `route_handlers` directory as a module
+mod route_handlers;
+
+// Import the handler functions for the `/` route
+use route_handlers::root_route_handlers;
+
+// Import the handler functions for the `/authors` route
+use route_handlers::authors_route_handlers;
 
 // Defines the entry point of the server
-
 #[tokio::main]
 async fn main() {
     // Connection settings
@@ -45,5 +53,5 @@ async fn main() {
     // since Rust does not have a built-in async runtime like Bun does.
     axum::serve(tcp_listener, app)
         .await
-        .expect("Failed to start TCP router");
+        .expect("Failed to start the Axum Server");
 }
