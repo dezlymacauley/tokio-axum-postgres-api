@@ -1,8 +1,4 @@
-// Imports the TcpListener struct from the tokio package.  
-use tokio::net::TcpListener;
-
-// Imports the `Router` struct from the axum package
-use axum::Router;
+// SECTION: Internal Imports
 
 // Declare the `route_handlers` directory as a module
 mod route_handlers;
@@ -10,6 +6,18 @@ mod route_handlers;
 // Import the handler functions for the `/` route,
 // and the `/authors` route.
 use route_handlers::{root_route_handlers, authors_route_handlers};
+
+//_____________________________________________________________________________
+
+// SECTION: External Imports
+
+// Imports the TcpListener struct from the tokio package.  
+use tokio::net::TcpListener;
+
+// Imports the `Router` struct from the axum package
+use axum::Router;
+
+//_____________________________________________________________________________
 
 // Defines the entry point of the server
 #[tokio::main]
