@@ -7,6 +7,10 @@ mod route_handlers;
 // and the `/authors` route.
 use route_handlers::{root_route_handlers, authors_route_handlers};
 
+// Declare the `mock_database` directory as a module
+mod mock_database;
+
+
 //_____________________________________________________________________________
 
 // SECTION: External Imports
