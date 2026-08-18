@@ -36,6 +36,6 @@ pub fn create_mock_database() -> DatabaseSchema {
 // allow the data types that were defined in src/mock_database/schema.rs
 // to be used outside of this file.
 // Usage: `crate::mock_database`
-// pub use schema::{Author, AuthorsTable, DatabaseSchema};
+pub use schema::{Author, AuthorsTable, DatabaseSchema};
 
 //_____________________________________________________________________________
